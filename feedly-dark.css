@@ -1,6 +1,6 @@
-/* supports-version:15.7 */
+/* supports-version:1.15.3 */
 
-@import url(feedly/claro-mod.min.css);
+@import url(feedly-dark/claro-mod.min.css);
 
 /*
 @font-face format for multiple browser support with local fonts preferred:
@@ -13,8 +13,8 @@
 		local('Arial Narrow'),                      // Windows, Chrome won't find 'Arial Narrow Bold' and fall back to this declaration
 		local('Liberation Sans Narrow Bold'),       // Same for Linux, Liberation Sans Narrow is a perfect, widely used equivalent
 		local('Liberation Sans Narrow'),            // Prefer Liberation over Nimbus which might come as ugly false-condensed
-		url('feedly/fonts/texgyreheroscn-bold-webfont.woff') format('woff'),       // ... if no local font is found, use the webfont
-		url('feedly/fonts/texgyreheroscn-bold-webfont.ttf') format('truetype');    // woff and ttf are enough; we don't support oldIEs
+		url('feedly-dark/fonts/texgyreheroscn-bold-webfont.woff') format('woff'),       // ... if no local font is found, use the webfont
+		url('feedly-dark/fonts/texgyreheroscn-bold-webfont.ttf') format('truetype');    // woff and ttf are enough; we don't support oldIEs
 */
 
 @font-face {
@@ -23,8 +23,8 @@
 	font-weight: normal;
 	src: local('Arial Narrow'),
 		local('Liberation Sans Narrow'),
-		url('feedly/fonts/texgyreheroscn-regular-webfont.woff') format('woff'),
-		url('feedly/fonts/texgyreheroscn-regular-webfont.ttf') format('truetype');
+		url('feedly-dark/fonts/texgyreheroscn-regular-webfont.woff') format('woff'),
+		url('feedly-dark/fonts/texgyreheroscn-regular-webfont.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'SansCn';
@@ -35,8 +35,8 @@
 		local('Arial Narrow'),
 		local('Liberation Sans Narrow Bold'),
 		local('Liberation Sans Narrow'),
-		url('feedly/fonts/texgyreheroscn-bold-webfont.woff') format('woff'),
-		url('feedly/fonts/texgyreheroscn-bold-webfont.ttf') format('truetype');
+		url('feedly-dark/fonts/texgyreheroscn-bold-webfont.woff') format('woff'),
+		url('feedly-dark/fonts/texgyreheroscn-bold-webfont.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'SansCn';
@@ -46,8 +46,8 @@
 		local('Arial Narrow'),
 		local('Liberation Sans Narrow Italic'),
 		local('Liberation Sans Narrow'),
-		url('feedly/fonts/texgyreheroscn-italic-webfont.woff') format('woff'),
-		url('feedly/fonts/texgyreheroscn-italic-webfont.ttf') format('truetype');
+		url('feedly-dark/fonts/texgyreheroscn-italic-webfont.woff') format('woff'),
+		url('feedly-dark/fonts/texgyreheroscn-italic-webfont.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'SansCn';
@@ -57,8 +57,8 @@
 		local('Arial Narrow'),
 		local('Liberation Sans Narrow Bold Italic'),
 		local('Liberation Sans Narrow'),
-		url('feedly/fonts/texgyreheroscn-bolditalic-webfont.woff') format('woff'),
-		url('feedly/fonts/texgyreheroscn-bolditalic-webfont.ttf') format('truetype');
+		url('feedly-dark/fonts/texgyreheroscn-bolditalic-webfont.woff') format('woff'),
+		url('feedly-dark/fonts/texgyreheroscn-bolditalic-webfont.ttf') format('truetype');
 }
 
 
@@ -396,6 +396,9 @@ select.attachments {
 
 html, button, input, select, textarea {
 	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, "Liberation Sans", "Nimbus Sans L", FreeSans, sans-serif;
+	border-color: #444;
+	color: #666;
+	background-color: #333
 }
 :focus {
 	outline: none;
@@ -454,16 +457,18 @@ img.feedIcon,
 img.tinyFeedIcon  {
 	width: 16px;
 	height: 16px;
+	filter: grayscale(100%) brightness(60%);
+	-webkit-filter: grayscale(100%) brightness(60%);
 }
 
 
 /* SKINNING ************************************************************/
 
 html {
-	color: #444;
+	color: #666;
 }
 a {
-	color: #5b4;
+	color: #999;
 	text-decoration: none;
 }
 a:hover {
@@ -498,6 +503,8 @@ a:hover {
 }
 #headlines-toolbar .main {
 	width: 100%;
+	color: #fff;
+	font-size: 0;
 	text-align: right;
 	cursor: default;
 }
@@ -505,22 +512,17 @@ a:hover {
 	float: left;
 	margin: 1px 0 0 12px;
 }
-#headlines-toolbar .main > .sel_links {
-	font-size: 0;
-	color: #fff;
-}
-#headlines-toolbar .main > *,
-#headlines-toolbar .main > .sel_links a {
+#headlines-toolbar .main > * {
+	color: #b2b2b2;
 	vertical-align: middle;
 	font-size: 12px;
-	color: #b2b2b2;
 }
-#headlines-toolbar .main > .sel_links a {
+#headlines-toolbar .main > a {
 	margin: 0 10px 0 2px;
 	text-decoration: none;
 	transition: color .2s;
 }
-#headlines-toolbar .main > .sel_links a:hover {
+#headlines-toolbar .main > a:hover {
 	color: #444;
 }
 #ttrssMain #main {
@@ -533,13 +535,13 @@ a:hover {
 #main,
 #feeds-holder,
 #main #headlines-wrap-inner .dijitSplitter {
-	background: #eee;
+	background: #111;
 }
 #header-wrap,
 #content-wrap,
 #toolbar {
 	overflow: visible; /* fixes transitions of feed tree collapse button */
-	background: #fff;
+	background: #111;
 }
 #main .dijitSplitterHover,
 #main .dijitSplitterActive {
@@ -585,7 +587,7 @@ a:hover {
 	z-index: 100;
 	width: 100%;
 	height: 100%;
-	background: #fff;
+	background: #000;
 	text-align: center;
 }
 #overlay:before {
@@ -602,16 +604,16 @@ a:hover {
 }
 #overlay_inner .dijitProgressBar {
 	margin: -10px 0;
-	border: 1px solid #d8d8d8;
+	border: 1px solid #333;
 }
 #overlay_inner .dijitProgressBarFull {
 	border: 0;
 }
 #overlay_inner .dijitProgressBarTile {
-	background: #e5e5e5;
+	background: #444;
 }
 #overlay_inner .dijitProgressBarLabel {
-	color: #444;
+	color: #666;
 	font-weight: bold;
 }
 .labelColorIndicator,
@@ -619,7 +621,7 @@ a:hover {
 .hlLabelRef {
 	display: inline-block;
 	border-radius: 99px;
-	background-color: #fec;
+	background-color: #888;
 	color: #444;
 	font-weight: bold;
 }
@@ -668,7 +670,7 @@ a:hover {
 	padding: 0;
 	width: 16px;
 	height: 16px;
-	background: transparent url("feedly/icons.png") 0 -16px no-repeat;
+	background: transparent url("feedly-dark/icons.png") 0 -16px no-repeat;
 	background-size: 176px 32px;
 	text-indent: 101%;
 	opacity: .2;
@@ -708,13 +710,16 @@ a:hover {
 	max-width: 100%;
 	border: 0;
 	background: transparent;
-	color: #909090;
+	color: #666;
 	text-overflow: ellipsis;
 	transition: color .2s;
 }
 #feeds-holder .dijitTreeRowSelected {
-	color: #222;
+	color: #666;
 	transition: none;
+	background-color: #333;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
 }
 #feeds-holder .dijitTreeLabel.Unread {
 	font-weight: bold;
@@ -749,7 +754,7 @@ a:hover {
 }
 #feeds-holder .dijitTreeRow .dijitTreeExpando {
 	margin: 0 4px 0 0;
-	background-image: url("feedly/icons.png");
+	background-image: url("feedly-dark/icons.png");
 	background-size: 176px 32px;
 	opacity: .2;
 }
@@ -787,7 +792,7 @@ a:hover {
 #feeds-holder #feedTree > .dijitTreeNode > .dijitTreeContainer > .dijitTreeNode:first-child > .dijitTreeRow {
 	margin: 0 0 7px;
 	padding: 13px 6px;
-	border-bottom: 1px solid #d4d4d4;
+	//border-bottom: 1px solid #d4d4d4;
 }
 #feeds-holder #feedTree > .dijitTreeNode > .dijitTreeContainer > .dijitTreeNode:first-child {
 	margin-bottom: 26px;
@@ -805,7 +810,7 @@ a:hover {
 	top: 0;
 	right: 34px;
 	left: 26px;
-	border-top: 1px solid #eee;
+	//border-top: 1px solid #eee;
 	content: "";
 }
 #floatingTitle .title,
@@ -833,7 +838,7 @@ a:hover {
 #headlines-frame:before {
 	display: block;
 	margin: 0 -34px 0 -26px;
-	border-top: 31px solid #fff;
+	border-top: 31px solid #000;
 	content: "";
 }
 #headlines-spacer {
@@ -850,11 +855,11 @@ a:hover {
 	bottom: 0;
 	left: -26px;
 	padding: 50px;
-	background: #ddd;
-	color: #909090;
+	background: #333;
+	color: #666;
 	content: "The End";
-	text-shadow: 0 1px 1px #fff;
-	letter-spacing: 1px;
+	//text-shadow: 0 1px 1px #fff;
+	//letter-spacing: 1px;
 	font-size: 18px;
 
 }
@@ -866,10 +871,10 @@ a:hover {
 #floatingTitle {
 	position: absolute;
 	top: 1px;
-	right: -26px;
+	right: 34px;
 	left: 26px;
 	z-index: 4;
-	background: #fff;
+	background: #000;
 }
 #floatingTitle .title {
 	color: inherit;
@@ -879,7 +884,7 @@ a:hover {
 	position: absolute;
 	right: 0;
 	left: 0;
-	border-top: 1px solid #d4d4d4;
+	//border-top: 1px solid #d4d4d4;
 	content: "";
 }
 #floatingTitle .titleWrap:before {
@@ -1132,7 +1137,7 @@ a:hover {
 .cdm.expanded {
 	overflow: hidden;
 	margin-bottom: 17px;
-	border: 1px solid #eee;
+	//border: 1px solid #eee;
 }
 .cdm.expandable.active .cdmExcerpt {
 	display: none;
@@ -1357,7 +1362,7 @@ div.articleNote {
 	right: 5px;
 	width: 16px;
 	height: 16px;
-	background: transparent url("feedly/icons.png") -16px -16px no-repeat;
+	background: transparent url("feedly-dark/icons.png") -16px -16px no-repeat;
 	background-size: 176px 32px;
 	content: "";
 	opacity: .3;
@@ -1454,6 +1459,14 @@ div.articleNote {
 	max-width: 100%;
 	width: auto;
 	height: auto;
+	filter: brightness(50%);
+	-webkit-filter: brightness(50%);
+}
+.cdmContentInner img:hover,
+.postContent img:hover {
+	filter: brightness(100%);
+	-webkit-filter: brightness(100%);
+}
 }
 .cdmContentInner figure,
 .postContent figure {
@@ -1602,7 +1615,7 @@ div.articleNote {
 	padding-top: 16px;
 	width: 16px;
 	height: 0;
-	background: transparent url("feedly/icons.png") -160px 0 no-repeat;
+	background: transparent url("feedly-dark/icons.png") -160px 0 no-repeat;
 	background-size: 176px 32px;
 	opacity: .2;
 	transition: opacity .2s;
@@ -1689,23 +1702,23 @@ hack inspired by browserhacks.com */
 		background: #6b5;
 		opacity: 1;
 		transition: none;
-		-webkit-mask: url("feedly/icons.png") -64px 0/176px 32px;
-		mask: url("feedly/icons.png") -64px 0/176px 32px;
+		-webkit-mask: url("feedly-dark/icons.png") -64px 0/176px 32px;
+		mask: url("feedly-dark/icons.png") -64px 0/176px 32px;
 	}
 	#floatingTitle img[src*='images/pub_set'],
 	#headlines-frame img[src*='images/pub_set'] {
 		background: #e84;
 		opacity: 1;
 		transition: none;
-		-webkit-mask: url("feedly/icons.png") -80px 0/176px 32px;
-		mask: url("feedly/icons.png") -80px 0/176px 32px;
+		-webkit-mask: url("feedly-dark/icons.png") -80px 0/176px 32px;
+		mask: url("feedly-dark/icons.png") -80px 0/176px 32px;
 	}
 	#headlines-frame .rchk.dijitCheckBoxChecked {
 		background: #db0;
 		opacity: 1;
 		transition: none;
-		-webkit-mask: url("feedly/icons.png") -160px 0/176px 32px;
-		mask: url("feedly/icons.png") -160px 0/176px 32px;
+		-webkit-mask: url("feedly-dark/icons.png") -160px 0/176px 32px;
+		mask: url("feedly-dark/icons.png") -160px 0/176px 32px;
 	}
 }}
 
@@ -1940,4 +1953,13 @@ table.prefErrorLog td.filename, table.prefErrorLog td.login, table.prefErrorLog 
 	border-bottom-color: #ccc;
 	border-left-color: #ccc;
 	content: "";
+}
+
+img.tagsPic, img.markedPic, img.feedIcon {
+	filter: grayscale(100%) brightness(60%);
+	-webkit-filter: grayscale(100%) brightness(60%);
+}
+
+.claro .dijitProgressBarEmpty {
+	background-color: #333;
 }
