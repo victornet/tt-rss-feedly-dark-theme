@@ -1235,13 +1235,13 @@ div.articleNote {
 .hl,
 .hl a,
 .hl.Unread .contentPreview {
-	color: #909090;
+	color: #444;
 }
 #floatingTitle.Unread .title,
 .cdm.Unread .title,
 .hl.Unread .hlContent a,
 .postHeader .postTitle a {
-	color: #444;
+	color: #aaa;
 }
 .cdm .title,
 .hlContent a {
